@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Loneliness of Seeing Clearly — Kurt Breitenmoser</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #0c0f1a;
+  --steel: #141828;
+  --deep: #1b2240;
+  --current: #2a3a6e;
+  --electric: #3d7fff;
+  --electric-soft: #6b9fff;
+  --copper: #b8864e;
+  --copper-soft: #d4a870;
+  --mist: #c8cdd8;
+  --fog: #7a8299;
+  --ghost: #3a4260;
+  --text: #dde0e8;
+  --text-dim: #8892a8;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--ink);
+  color: var(--text);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 19px;
+  font-weight: 300;
+  line-height: 1.9;
+  min-height: 100vh;
+}
+
+.cover {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 6rem 3rem 6rem;
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.cover-atmosphere {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 80% 20%, rgba(42, 58, 110, 0.35) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 70% at 10% 90%, rgba(20, 24, 40, 0.8) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.shield-watermark {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.04;
+  width: 340px;
+}
+
+.cover-inner {
+  position: relative;
+  max-width: 680px;
+}
+
+.byline {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--electric-soft);
+  margin-bottom: 2.5rem;
+}
+
+.cover-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.8rem, 7vw, 5rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.cover-title-accent {
+  font-style: italic;
+  color: var(--electric-soft);
+  display: block;
+}
+
+.cover-rule {
+  width: 48px;
+  height: 1px;
+  background: var(--electric);
+  opacity: 0.4;
+  margin: 2.5rem 0;
+}
+
+.cover-deck {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--fog);
+  max-width: 500px;
+  line-height: 1.75;
+  font-style: italic;
+}
+
+.copyright-line {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 3rem;
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--ghost);
+  text-transform: uppercase;
+}
+
+.body-wrap {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 5rem 2.5rem 8rem;
+}
+
+.duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--ghost);
+  margin: 4rem 0 5rem;
+  border: 1px solid var(--ghost);
+}
+
+.duo-panel {
+  padding: 2.5rem 2rem;
+  background: var(--ink);
+}
+
+.duo-panel:first-child {
+  background: rgba(26, 34, 64, 0.6);
+}
+
+.duo-panel:last-child {
+  background: rgba(20, 18, 14, 0.4);
+}
+
+.duo-tag {
+  font-family: 'Jost', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+  display: block;
+}
+
+.duo-tag.blue { color: var(--electric-soft); }
+.duo-tag.copper { color: var(--copper-soft); }
+
+.duo-head {
+  font-size: 1.05rem;
+  font-weight: 400;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+
+.duo-head.blue { color: var(--electric-soft); }
+.duo-head.copper { color: var(--copper-soft); }
+
+.duo-body {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.8;
+}
+
+.section {
+  margin-bottom: 5rem;
+}
+
+.sec-tag {
+  font-family: 'Jost', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--electric);
+  opacity: 0.5;
+  margin-bottom: 0.75rem;
+}
+
+.sec-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--text);
+  margin-bottom: 2rem;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin-bottom: 1.6rem;
+  font-weight: 300;
+  color: var(--text);
+}
+
+p:last-child { margin-bottom: 0; }
+
+.pull {
+  border-left: 2px solid var(--electric);
+  padding: 1.25rem 1.75rem;
+  margin: 3rem 0;
+  background: rgba(61, 127, 255, 0.04);
+}
+
+.pull p {
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1.65;
+  color: var(--mist);
+  margin: 0;
+}
+
+.pull-copper {
+  border-left: 2px solid var(--copper);
+  padding: 1.25rem 1.75rem;
+  margin: 3rem 0;
+  background: rgba(184, 134, 78, 0.04);
+}
+
+.pull-copper p {
+  font-style: italic;
+  font-size: 1.2rem;
+  line-height: 1.65;
+  color: var(--copper-soft);
+  margin: 0;
+}
+
+.scene {
+  border: 1px solid var(--ghost);
+  padding: 2rem 2rem 2rem 2.5rem;
+  margin: 3rem 0;
+  position: relative;
+  background: rgba(255,255,255,0.01);
+}
+
+.scene::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 2px; height: 100%;
+  background: var(--current);
+  opacity: 0.5;
+}
+
+.scene-tag {
+  font-family: 'Jost', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.scene p {
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  line-height: 1.85;
+  margin-bottom: 1rem;
+}
+
+.scene p:last-child { margin-bottom: 0; }
+
+.rule {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 4rem 0;
+}
+
+.rule-line { flex: 1; height: 1px; background: var(--ghost); }
+.rule-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--electric); opacity: 0.4; }
+
+.coda {
+  border: 1px solid var(--ghost);
+  padding: 3.5rem 2.5rem;
+  margin-top: 5rem;
+  text-align: center;
+  position: relative;
+  background: rgba(26, 34, 64, 0.2);
+}
+
+.coda-shield {
+  width: 42px;
+  margin: 0 auto 2rem;
+  opacity: 0.2;
+}
+
+.coda-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.4rem;
+  font-style: italic;
+  color: var(--electric-soft);
+  margin-bottom: 2rem;
+}
+
+.coda p {
+  color: var(--text-dim);
+  font-size: 1rem;
+  max-width: 500px;
+  margin: 0 auto 1.4rem;
+  line-height: 1.85;
+}
+
+.coda-final {
+  color: var(--copper-soft) !important;
+  font-style: italic;
+  font-size: 1.1rem !important;
+  margin-top: 2rem !important;
+}
+
+.coda-copyright {
+  font-family: 'Jost', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ghost);
+  margin-top: 2.5rem;
+}
+
+em { font-style: italic; }
+
+@media (max-width: 580px) {
+  .duo { grid-template-columns: 1fr; }
+  .cover { padding: 5rem 1.5rem; }
+  .copyright-line { left: 1.5rem; }
+  .body-wrap { padding: 4rem 1.5rem 6rem; }
+  body { font-size: 17px; }
+}
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div class="cover-atmosphere"></div>
+
+  <svg class="shield-watermark" viewBox="0 0 300 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M150 20 L280 80 L280 200 Q280 310 150 345 Q20 310 20 200 L20 80 Z" fill="none" stroke="#3d7fff" stroke-width="3"/>
+    <path d="M105 160 L150 105 L195 160 L172 160 L172 250 L128 250 L128 160 Z" fill="#3d7fff"/>
+  </svg>
+
+  <div class="cover-inner">
+    <div class="byline">An essay by Kurt Breitenmoser</div>
+    <h1 class="cover-title">
+      The Loneliness
+      <span class="cover-title-accent">of Seeing Clearly</span>
+    </h1>
+    <div class="cover-rule"></div>
+    <p class="cover-deck">On what it costs to perceive accurately in a world that rewards agreement — and why that cost is not what you think it is.</p>
+  </div>
+
+  <div class="copyright-line">© Kurt Breitenmoser — All rights reserved</div>
+</section>
+
+<main class="body-wrap">
+
+  <div class="duo">
+    <div class="duo-panel">
+      <span class="duo-tag blue">The version fewer people choose</span>
+      <div class="duo-head blue">The Superman who carries it alone</div>
+      <div class="duo-body">
+        Zack Snyder's Man of Steel is not immediately loved. He is questioned, feared, and debated by the very people he carries. He saves those who protest him. He holds his values under pressure that would dissolve lesser convictions. He does not perform his goodness for applause.
+        <br><br>
+        The people drawn to this version tend to understand something the others do not yet — that doing right and being seen doing right are two entirely different experiences, and that you can have one without the other for a very long time.
+      </div>
+    </div>
+    <div class="duo-panel">
+      <span class="duo-tag copper">The version most people prefer</span>
+      <div class="duo-head copper">The Superman the world opens its arms to</div>
+      <div class="duo-body">
+        The more popular portrayals move through the world with ease. They are welcomed. They fit. People are glad they exist and say so openly. The heroism is celebrated in real time rather than questioned and only understood in hindsight.
+        <br><br>
+        People who prefer these versions often move through social environments the same way. Agreement, for them, is the default. They have rarely had to hold a true position while an entire room decided, quietly and collectively, to disagree.
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="sec-tag">I.</div>
+    <h2 class="sec-title">The room that turns</h2>
+
+    <p>There is an experience so specific it deserves its own name, and the fact that it does not have one is part of why it is so isolating. It is the experience of seeing something clearly — in a meeting, a conversation, a community — that nobody else in the room will acknowledge. You name it. You say it plainly. And the room turns.</p>
+
+    <p>Not dramatically. Not with raised voices. The energy just shifts. Eyes move. The conversation redirects around what you said like water moving around a stone. And you are left holding an accurate observation in a space that has decided, without discussion, that comfort takes priority over accuracy today.</p>
+
+    <div class="pull">
+      <p>The silence after you speak is not always ignorance. Sometimes it is the sound of a room choosing what it would prefer to be true.</p>
+    </div>
+
+    <p>This happens in small organisations run by people who need a particular narrative to remain intact. It happens in friend groups where the social cost of honesty has quietly been established as too high. It happens in families, workplaces, and communities — anywhere that a collective comfort has been built on foundations that do not bear close examination.</p>
+
+    <p>The person who sees clearly pays a specific price for their perception. They are tolerated in proportion to how useful they are and managed in proportion to how uncomfortable their clarity makes the people around them. They are brought in when things need fixing. They are left out when credit is distributed. They are never quite the first choice and always somehow indispensable.</p>
+
+    <p>This is not paranoia. It is a pattern. And patterns, examined honestly, are data.</p>
+  </section>
+
+  <div class="rule"><div class="rule-line"></div><div class="rule-dot"></div><div class="rule-line"></div></div>
+
+  <section class="section">
+    <div class="sec-tag">II.</div>
+    <h2 class="sec-title">The village and the two men</h2>
+
+    <p>Two men walk through the same village at the end of the day. The first sees market stalls closing, children returning home, fires being lit. He goes to bed satisfied. The second sees all of those things and also sees the crack in the granary wall, the tension between two families, the child who has been too quiet for too many days. He also goes to bed. But not as easily.</p>
+
+    <p>The common wisdom says the first man is happier. But this confuses the symptom with the cause. The first man is quieter. That is different. The crack in the granary wall exists whether either man sees it. The tension between the families will become something eventually, regardless. The child's silence has a reason that will surface in time. The first man's sleep is undisturbed not because his world is better but because his sight does not reach as far.</p>
+
+    <div class="scene">
+      <span class="scene-tag">Illustration</span>
+      <p>Consider a student council at a secondary school. Twelve members. One of them notices, during a budget meeting, that the funds allocated to events keep arriving depleted. He raises it. The room goes quiet in that specific way. The teacher-patron thanks him for his concern and moves on. Two other students glance at each other briefly. The meeting continues.</p>
+      <p>Three months later, when the discrepancy becomes undeniable, a committee is formed. The student who raised it first is not on the committee. He is, however, asked to help draft the report.</p>
+      <p>He does. Thoroughly. The report is used. His name is thanked in a footnote.</p>
+    </div>
+
+    <p>Ignorance is not bliss. Ignorance is a smaller radius of awareness, which feels like peace until the things beyond that radius arrive anyway — as they always do. The person who saw the crack and said so is not unhappy because they are less intelligent than the person who slept soundly. They are carrying weight that the other person will only encounter when it becomes unavoidable.</p>
+
+    <p>That weight is not a flaw. It is the cost of a longer view. And a longer view, however uncomfortable, is worth having — because it is the only view from which anything can actually be prevented rather than merely survived.</p>
+  </section>
+
+  <div class="rule"><div class="rule-line"></div><div class="rule-dot"></div><div class="rule-line"></div></div>
+
+  <section class="section">
+    <div class="sec-tag">III.</div>
+    <h2 class="sec-title">On intelligence and the correct problem</h2>
+
+    <p>There is a compelling argument that intelligence should be measured not by the complexity of the problems you can solve in a classroom but by the difficulty of the problems you actually solve in a life. That the person who figures out how to be genuinely content, how to build something real, how to navigate the relational terrain of a human existence — that person is demonstrating a form of intelligence that a grade point average was never designed to capture.</p>
+
+    <p>This argument is largely correct. And it contains a trap.</p>
+
+    <p>The trap is the assumption that unhappiness is primarily a thinking problem. That if you apply your intelligence correctly — if you prioritise the right problems, stop seeking external approval, think independently — the contentment will follow. It treats the path to a good life as though it were mostly a matter of orientation, of pointing your mind in the right direction.</p>
+
+    <div class="pull-copper">
+      <p>You cannot solve for contentment while also solving for survival. You do both — many people do both — but they are not the same problem, and pretending they are does not help the person doing both simultaneously.</p>
+    </div>
+
+    <p>The young man who trains for months to join a defence force because it appears to be the only available exit from a situation not of his making — who gives everything to the preparation and is still left behind because he was not the fastest — and who then finds another path and walks it, slowly, through borrowed money and deferred years and one meal a day — that young man is not misapplying his intelligence. He is applying it to the correct problem given the actual circumstances. The correct problem changes depending on the floor beneath you. And the floor is not a thinking problem. It is a material one.</p>
+
+    <p>Intelligence, properly understood, includes knowing which problem you are actually solving. And sometimes the problem is simply: how do I remain standing long enough to reach the ground where the other problems become possible to address.</p>
+
+    <p>Remaining standing is not a lesser form of intelligence. It is, under certain conditions, the most demanding one.</p>
+  </section>
+
+  <div class="rule"><div class="rule-line"></div><div class="rule-dot"></div><div class="rule-line"></div></div>
+
+  <section class="section">
+    <div class="sec-tag">IV.</div>
+    <h2 class="sec-title">The approval trap, and how to leave it</h2>
+
+    <p>Here is the mechanism worth understanding, because once you see it, you cannot unsee it and it explains a great deal about how institutions and social structures actually function.</p>
+
+    <p>From early in life, most people are trained to perform well within systems defined by others — school, family, religion, workplace. The reward for performance is approval. And approval, when it arrives consistently, becomes a kind of internal currency that the person begins to need in order to feel oriented. They become excellent at doing things right as right is defined by someone else. And they become, gradually, lost when that definition is removed or when they find themselves in a space where the someone else's definition of right requires them to see less clearly than they actually do.</p>
+
+    <div class="scene">
+      <span class="scene-tag">Illustration</span>
+      <p>A young woman joins a volunteer organisation. She is diligent, perceptive, and quickly becomes invaluable to the operations. She notices after several months that the organisation's public reporting does not quite match the activities she has observed on the ground. The numbers are not fabricated exactly. They are just — framed generously.</p>
+      <p>She raises it privately with her supervisor. She is told that this is how these things work, that funders want to see impact, and that her job is to support the mission not audit it. She nods. She continues. She goes home with the specific discomfort of someone who has been asked to perform agreement she does not feel.</p>
+      <p>Six months later she is passed over for a senior role. The person selected is newer, less capable operationally, but more comfortable with the framing. More agreeable. A better fit.</p>
+      <p>She was correct about the reporting. She was managed out of advancement because of it. Both of these things are true simultaneously.</p>
+    </div>
+
+    <p>The liberation from this trap is not cynicism about all organisations. It is the development of a specific discernment — the ability to distinguish between spaces where honest perception is genuinely welcomed and spaces where it is tolerated only to the extent that it does not disturb the consensus. Most spaces fall into the second category. A few, genuinely, fall into the first. The skill is in telling them apart before you have given everything to the wrong one.</p>
+
+    <p>The person who has learned this skill through experience rather than theory carries something valuable: a calibrated sense of which rooms are worth entering fully and which require a different kind of presence. Not withholding. Not performative. Just proportional.</p>
+  </section>
+
+  <div class="rule"><div class="rule-line"></div><div class="rule-dot"></div><div class="rule-line"></div></div>
+
+  <section class="section">
+    <div class="sec-tag">V.</div>
+    <h2 class="sec-title">Discernment is not a wall</h2>
+
+    <p>There is a version of this essay that ends in a kind of fortress. Having described all the ways that clarity isolates, that institutions manage the perceptive, that rooms turn against honest observation — it would be easy to conclude that the correct response is a high wall, a permanent suspicion, a strategy of non-investment as self-protection.</p>
+
+    <p>That conclusion would be wrong. And it would be a waste.</p>
+
+    <div class="pull">
+      <p>Discernment is a filter. Cynicism is a wall. A filter lets things through — slowly, after examination, when they have demonstrated they are worth it. A wall lets nothing through. One is wise. The other is just a longer kind of suffering.</p>
+    </div>
+
+    <p>The person who has been burned by misplaced trust learns, over time, to read rooms before investing in them. They watch who gets credited and who gets absorbed. They notice the gap between what a community says it values and what it actually rewards. They pay attention to who is brought in when things are broken and who is called to the front when things are celebrated. These observations are not bitterness. They are pattern recognition doing exactly what pattern recognition is supposed to do.</p>
+
+    <p>But the same person — if they are honest with themselves — knows that there are rooms worth entering. People worth knowing. Spaces that, while imperfect, are genuine in their imperfection rather than managed in it. The discerning person does not stop looking for those rooms. They just stop mistaking other rooms for them.</p>
+
+    <p>That is not a closed heart. That is an honest one.</p>
+  </section>
+
+  <div class="rule"><div class="rule-line"></div><div class="rule-dot"></div><div class="rule-line"></div></div>
+
+  <section class="section">
+    <div class="sec-tag">VI.</div>
+    <h2 class="sec-title">The rose and the glove</h2>
+
+    <p>Something is almost always misunderstood about people who have been through genuinely difficult things and come out still thinking clearly, still holding their values, still capable of softness. They are assumed to be hardened. Closed. Shaped by their pain into something less than what they were before it.</p>
+
+    <p>The assumption is usually wrong.</p>
+
+    <p>The person who has carried weight quietly — who has been the last introduced and the first needed, who has given fully to rooms that acknowledged them partially, who has warned and not been heard and then been proven right and not been thanked — and who still, despite all of this, can describe the home they want to build one day with warmth and specificity and love: that person has not been diminished by their experience. They have been made precise by it.</p>
+
+    <div class="pull-copper">
+      <p>A child deserves both the rose and the glove. The tenderness and the preparation. The love that is freely given and the wisdom that was hard won. These are not opposites. They are the complete thing.</p>
+    </div>
+
+    <p>Hurt people hurt people. Everyone knows this. Less discussed is its inverse: people who have been hurt and who have chosen — consciously, at cost, against the easier path of passing it forward — not to. Those people produce something rare. A love that knows its own price. A home built not from innocence but from intention.</p>
+
+    <p>That is not a lesser love. It is a more serious one. It is the kind built by someone who knows exactly what the absence of it feels like, and who has decided, because of that knowledge rather than in spite of it, to build something different.</p>
+
+    <p>The Man of Steel does not become cold because the world makes him carry more than it acknowledges. He becomes more deliberate. More careful with what he protects. More precise about where he places his weight and why. That is not loss. That is the correct response to the specific education that difficulty provides, when you refuse to let it close you.</p>
+  </section>
+
+  <div class="rule"><div class="rule-line"></div><div class="rule-dot"></div><div class="rule-line"></div></div>
+
+  <section class="section">
+    <div class="sec-tag">VII.</div>
+    <h2 class="sec-title">What happiness actually looks like from here</h2>
+
+    <p>It does not look like the highlight reel. It does not announce itself. It does not arrive as a sudden reversal where everyone who doubted you watches you proved right in a single moment of vindication. Life is not a film, and the people who were wrong about you will mostly never know they were wrong, and that is fine.</p>
+
+    <p>What it looks like is quieter and more durable than that. It looks like still standing after the things that were supposed to stop you. It looks like a degree almost completed after a year deferred and money borrowed and odds that were not in your favor. It looks like arriving in a new room — a first professional placement, a new city, a new chapter — with a mind that has been sharpened by everything it has been through rather than dulled by it.</p>
+
+    <p>It looks like knowing, with some certainty, what kind of person you are. Not perfectly. Not without ongoing questions. But with enough clarity to stop letting other people's confusion about you become your own.</p>
+
+    <div class="pull">
+      <p>The proof of intelligence is not only what you have built. It is also what you refused to be broken into not building.</p>
+    </div>
+
+    <p>The loneliness of seeing clearly is real. It is not imagined and it is not self-pity and it is not the result of a mind that has turned against itself. It is the specific friction of a perception that exceeds the environments it has so far been placed in. It is temporary not because those environments will change — they mostly will not — but because environments change. New rooms exist. Rooms worth entering. Rooms where the person who sees clearly is not managed around but genuinely used, in the fullest sense of the word.</p>
+
+    <p>The work is staying open enough to recognise those rooms when they appear. After everything. Still open. That is not naivety. That is the hardest and most important form of courage available to someone who has earned the right to be closed and chosen not to be.</p>
+
+    <p>The smartest people are not always the most immediately celebrated. But the ones who see truly and stay kind, who carry weight and stay soft, who are right and remain humble enough to keep asking if they might be wrong — those people build something. Quietly. On honest ground. Even when nobody is watching.</p>
+
+    <p>Especially then.</p>
+  </section>
+
+  <div class="coda">
+    <svg class="coda-shield" viewBox="0 0 48 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M24 3 L45 13 L45 32 Q45 48 24 55 Q3 48 3 32 L3 13 Z" fill="none" stroke="#3d7fff" stroke-width="1.5"/>
+      <path d="M15 26 L24 16 L33 26 L29 26 L29 40 L19 40 L19 26 Z" fill="#3d7fff"/>
+    </svg>
+
+    <div class="coda-title">A note to close</div>
+
+    <p>Not everything that costs you was wasted on you. Not every room that did not see you failed to teach you. The loneliness of seeing clearly is a tuition that buys something real — a calibrated eye, an honest heart, and the specific confidence of someone who remained standing when remaining standing was genuinely hard.</p>
+
+    <p>That is not nothing. That is, quietly, everything.</p>
+
+    <p class="coda-final">The room ahead of you is worth entering.</p>
+
+    <div class="coda-copyright">© Kurt Breitenmoser — Original work — All rights reserved</div>
+  </div>
+
+</main>
+
+</body>
+</html>
